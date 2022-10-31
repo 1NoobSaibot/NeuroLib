@@ -10,6 +10,9 @@ namespace NeuroLib
 		private float[][] _layerOutputs;
 		private float[][] _biases;
 
+
+		public int AmountOfLayers => _layerOutputs.Length;
+
 		
 		public NeuralNetwork(params int[] amountsOfNeurons)
 		{
