@@ -89,6 +89,44 @@ namespace NeuroLib
 		}
 
 
+		public NeuralNetwork Clone()
+		{
+			int[] layers = GetConstructorParams();
+			NeuralNetwork copy = new NeuralNetwork(layers);
+
+			for (int i = 1; i < layers.Length; i++)
+			{
+				float[] dstBiasVector = copy.GetBiasVector(i);
+				float[] srcBiasVector = this.GetBiasVector(i);
+				float[,] dstWeightMatrix = copy.GetWeightMatrix(i);
+				float[,] srcWeightMatrix = this.GetWeightMatrix(i);
+
+				for (int j = 0; j < dstBiasVector.Length; j++)
+				{
+					dstBiasVector[j] = srcBiasVector[j];
+
+					for (int inNeuron = 0; inNeuron < dstWeightMatrix.GetLength(0); inNeuron++)
+					{
+						dstWeightMatrix[inNeuron, j] = srcWeightMatrix[inNeuron, j];
+					}
+				}
+			}
+
+			return copy;
+		}
+
+
+		public int[] GetConstructorParams()
+		{
+			int[] layers = new int[_layerOutputs.Length];
+			for (int i = 0; i < layers.Length; i++)
+			{
+				layers[i] = _layerOutputs[i].Length;
+			}
+			return layers;
+		}
+
+
 		private void _CreateLayerVectors(int[] amountsOfNeurons)
 		{
 			_layerOutputs = new float[amountsOfNeurons.Length][];

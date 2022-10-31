@@ -31,5 +31,15 @@ namespace NeuroLibTest
 			NeuralNetwork xor = XorNetworkBuilder.BuildNetwork();
 			XorNetworkTester.TestNetwork(xor);
 		}
+
+
+		[TestMethod]
+		public void ClonedNeuralNetworkWorksInTheSameWay()
+		{
+			NeuralNetwork n1 = XorNetworkBuilder.BuildNetwork();
+			NeuralNetwork n2 = n1.Clone();
+
+			XorNetworkTester.TestNetwork(n2);
+		}
 	}
 }
