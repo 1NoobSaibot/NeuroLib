@@ -72,5 +72,50 @@
 
 			return res;
 		}
+
+
+		internal static T[] Extend<T>(this T[] origin)
+		{
+			T[] res = new T[origin.Length + 1];
+
+			for (int i = 0; i < origin.Length; i++)
+			{
+				res[i] = origin[i];
+			}
+
+			return res;
+		}
+
+
+		internal static T[,] AddRow<T>(this T[,] origin)
+		{
+			T[,] res = new T[origin.GetLength(0), origin.GetLength(1) + 1];
+
+			for (int x = 0; x < origin.GetLength(0); x++)
+			{
+				for (int y = 0; y < origin.GetLength(1); y++)
+				{
+					res[x, y] = origin[x, y];
+				}
+			}
+
+			return res;
+		}
+
+
+		internal static T[,] AddColumn<T>(this T[,] origin)
+		{
+			T[,] res = new T[origin.GetLength(0) + 1, origin.GetLength(1)];
+
+			for (int x = 0; x < origin.GetLength(0); x++)
+			{
+				for (int y = 0; y < origin.GetLength(1); y++)
+				{
+					res[x, y] = origin[x, y];
+				}
+			}
+
+			return res;
+		}
 	}
 }

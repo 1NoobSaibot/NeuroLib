@@ -33,8 +33,8 @@ namespace NeuroLib
 
 		public void SetInputs(float[] values)
 		{
-			int inputLength = _layerOutputs[0].Length;
-			for (int i = 0; i < inputLength; i++)
+			int length = Math.Min(_layerOutputs[0].Length, values.Length);
+			for (int i = 0; i < length; i++)
 			{
 				_layerOutputs[0][i] = values[i];
 			}
@@ -161,6 +161,42 @@ namespace NeuroLib
 			_layerOutputs[outLayer] = _layerOutputs[outLayer].RemoveElementAtIndex(neuron);
 			_RemoveBiasForNeuron(outLayer, neuron);
 			_RemoveInWeights(outLayer, neuron);
+		}
+
+
+		public void AddNeuron(int layer)
+		{
+			if (layer == 0)
+			{
+				AddInputNeuron();
+				return;
+			}
+			if (layer == _layerOutputs.Length - 1)
+			{
+				AddOutputNeuron();
+				return;
+			}
+
+			_layerOutputs[layer] = _layerOutputs[layer].Extend();
+			_biases[layer - 1] = _biases[layer - 1].Extend();
+			_weights[layer - 1] = _weights[layer - 1].AddRow();
+			_weights[layer] = _weights[layer].AddColumn();
+		}
+
+
+		public void AddInputNeuron()
+		{
+			_layerOutputs[0] = _layerOutputs[0].Extend();
+			_weights[0] = _weights[0].AddColumn();
+		}
+
+
+		public void AddOutputNeuron()
+		{
+			int layer = _layerOutputs.Length - 1;
+			_layerOutputs[layer] = _layerOutputs[layer].Extend();
+			_biases[layer - 1] = _biases[layer - 1].Extend();
+			_weights[layer - 1] = _weights[layer - 1].AddRow();
 		}
 
 

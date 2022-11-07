@@ -50,5 +50,18 @@ namespace NeuroLibTest
 			n1.RemoveNeuron(2, 1);
 			XorNetworkTester.TestNetwork(n1);
 		}
+
+
+		[TestMethod]
+		public void InsertingOneEmptyNeuronDoesntBreakNetwork()
+		{
+			NeuralNetwork n1 = XorNetworkBuilder.BuildNetwork();
+			n1.AddNeuron(1);
+			XorNetworkTester.TestNetwork(n1);
+			n1.AddNeuron(0);
+			XorNetworkTester.TestNetwork(n1);
+			n1.AddNeuron(2);
+			XorNetworkTester.TestNetwork(n1);
+		}
 	}
 }

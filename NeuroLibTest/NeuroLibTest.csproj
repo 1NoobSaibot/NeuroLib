@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="NeuralNetworkTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RandomNeuronInserterTest.cs" />
     <Compile Include="XorNetworkTester.cs" />
     <Compile Include="XorNetworkBuilder.cs" />
   </ItemGroup>
