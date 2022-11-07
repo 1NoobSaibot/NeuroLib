@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NeuroLib.Helpers;
+using System;
 using System.Diagnostics;
 
 
@@ -127,6 +128,42 @@ namespace NeuroLib
 		}
 
 
+		public void RemoveNeuron(int layer, int neuron)
+		{
+			if (layer == 0)
+			{
+				RemoveInputNeuron(neuron);
+				return;
+			}
+			else if (layer == _layerOutputs.Length - 1)
+			{
+				RemoveOutputNeuron(neuron);
+				return;
+			}
+
+			_RemoveBiasForNeuron(layer, neuron);
+			_layerOutputs[layer] = _layerOutputs[layer].RemoveElementAtIndex(neuron);
+			_RemoveInWeights(layer, neuron);
+			_RemoveOutWeights(layer, neuron);
+		}
+
+
+		public void RemoveInputNeuron(int neuron)
+		{
+			_layerOutputs[0] = _layerOutputs[0].RemoveElementAtIndex(neuron);
+			_RemoveOutWeights(0, neuron);
+		}
+
+
+		public void RemoveOutputNeuron(int neuron)
+		{
+			int outLayer = _layerOutputs.Length - 1;
+			_layerOutputs[outLayer] = _layerOutputs[outLayer].RemoveElementAtIndex(neuron);
+			_RemoveBiasForNeuron(outLayer, neuron);
+			_RemoveInWeights(outLayer, neuron);
+		}
+
+
 		private void _CreateLayerVectors(int[] amountsOfNeurons)
 		{
 			_layerOutputs = new float[amountsOfNeurons.Length][];
@@ -159,6 +196,26 @@ namespace NeuroLib
 			{
 				_biases[i - 1] = new float[amountsOfNeurons[i]];
 			}
+		}
+
+
+		private void _RemoveBiasForNeuron(int layer, int neuron)
+		{
+			int biasVectorIndex = layer - 1;
+			_biases[biasVectorIndex] = _biases[biasVectorIndex].RemoveElementAtIndex(neuron);
+		}
+
+
+		private void _RemoveInWeights(int layer, int neuron)
+		{
+			int weightMatrixIndex = layer - 1;
+			_weights[weightMatrixIndex] = _weights[weightMatrixIndex].RemoveRow(neuron);
+		}
+
+
+		private void _RemoveOutWeights(int layer, int neuron)
+		{
+			_weights[layer] = _weights[layer].RemoveColumn(neuron);
 		}
 	}
 }

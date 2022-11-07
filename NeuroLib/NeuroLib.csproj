@@ -41,7 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NeuralNetwork.cs" />
+    <Compile Include="Helpers\ArrayExtension.cs" />
+    <Compile Include="RegularNeuralNetwork\Evolution\Cloner.cs" />
+    <Compile Include="Properties\ModificationQueue.cs" />
+    <Compile Include="Modifier.cs" />
+    <Compile Include="RegularNeuralNetwork\Evolution\RandomNeuronRemover.cs" />
+    <Compile Include="RegularNeuralNetwork\NeuralNetwork.cs" />
+    <Compile Include="RegularNeuralNetwork\Randomiser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
