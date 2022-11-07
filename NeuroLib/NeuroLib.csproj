@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\ArrayExtension.cs" />
+    <Compile Include="RandomModification.cs" />
     <Compile Include="RegularNeuralNetwork\Evolution\Cloner.cs" />
     <Compile Include="Properties\ModificationQueue.cs" />
     <Compile Include="Modifier.cs" />
