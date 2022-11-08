@@ -63,5 +63,17 @@ namespace NeuroLibTest
 			n1.AddNeuron(2);
 			XorNetworkTester.TestNetwork(n1);
 		}
+
+
+		[TestMethod]
+		public void ShouldReturnAnAmountOfParams()
+		{
+			NeuralNetwork net = new NeuralNetwork(1, 1);
+			Assert.AreEqual(2, net.GetAmountOfParams());
+
+			// (4w + 2b) + (2w + 1b)
+			net = new NeuralNetwork(2, 2, 1);
+			Assert.AreEqual(9, net.GetAmountOfParams());
+		}
 	}
 }

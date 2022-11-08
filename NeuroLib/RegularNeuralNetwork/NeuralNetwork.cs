@@ -71,6 +71,25 @@ namespace NeuroLib
 		}
 
 
+		/// <summary>
+		/// Returns count of weights and biases. The less params it has, the fastest calculations.
+		/// When you use genetic, you should prioritize the smalest networks between the most accurate.
+		/// </summary>
+		/// <returns>Count of weights and biases together</returns>
+		public int GetAmountOfParams()
+		{
+			int[] parms = GetConstructorParams();
+
+			int sum = 0;
+			for (int i = 1; i < parms.Length; i++)
+			{
+				sum += parms[i] + parms[i - 1] * parms[i];
+			}
+
+			return sum;
+		}
+
+
 		public float GetOutput(int outIndex)
 		{
 			int outLayerIndex = _layerOutputs.Length - 1;
