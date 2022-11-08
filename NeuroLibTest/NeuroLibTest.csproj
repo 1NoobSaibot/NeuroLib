@@ -52,6 +52,7 @@
     <Compile Include="NeuralNetworkTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomModificationTest.cs" />
+    <Compile Include="RandomParamChangerTest.cs" />
     <Compile Include="RandomNeuronInserterTest.cs" />
     <Compile Include="XorNetworkTester.cs" />
     <Compile Include="XorNetworkBuilder.cs" />

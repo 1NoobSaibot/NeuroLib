@@ -47,6 +47,7 @@
     <Compile Include="Properties\ModificationQueue.cs" />
     <Compile Include="Modifier.cs" />
     <Compile Include="RegularNeuralNetwork\Evolution\RandomNeuronInserter.cs" />
+    <Compile Include="RegularNeuralNetwork\Evolution\RandomParamChanger.cs" />
     <Compile Include="RegularNeuralNetwork\Evolution\RandomNeuronRemover.cs" />
     <Compile Include="RegularNeuralNetwork\NeuralNetwork.cs" />
     <Compile Include="RegularNeuralNetwork\Randomiser.cs" />
