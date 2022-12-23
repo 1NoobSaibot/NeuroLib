@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CantModifyException.cs" />
     <Compile Include="Helpers\ArrayExtension.cs" />
     <Compile Include="RandomModification.cs" />
     <Compile Include="RegularNeuralNetwork\Evolution\Cloner.cs" />
