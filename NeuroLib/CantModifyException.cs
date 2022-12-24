@@ -4,15 +4,13 @@ namespace NeuroLib
 {
 	public class CantModifyException : Exception
 	{
-		public CantModifyException(string message, object original)
-			: base(message)
+		public CantModifyException(string message) : base(message)
 		{
-			Data.Add("Original", original);
 		}
 
 
-		public CantModifyException(string message, object original, CantModifyException[] errors)
-			: this(message, original)
+		public CantModifyException(string message, CantModifyException[] errors)
+			: this(message)
 		{
 			Data.Add("InnerErrors", errors);
 		}

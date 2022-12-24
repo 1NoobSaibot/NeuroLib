@@ -40,7 +40,7 @@ namespace NeuroLib.RegularNeuralNetwork.Evolution
 			int[] layersCanBeReduced = _GetLayersCanBeReduced(layers);
 			if (layersCanBeReduced.Length == 0)
 			{
-				throw new CantModifyException("Cannot remove any neuron", net);
+				throw new CantModifyException("Cannot remove any neuron");
 			}
 			return layersCanBeReduced[_rnd.Next(layersCanBeReduced.Length)];
 		}

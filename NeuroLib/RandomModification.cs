@@ -74,7 +74,7 @@ namespace NeuroLib
 				}
 			}
 
-			throw new CantModifyException("All modifiers cant change the object", original, errors.ToArray());
+			throw new CantModifyException("All modifiers cant change the object", errors.ToArray());
 		}
 	}
 

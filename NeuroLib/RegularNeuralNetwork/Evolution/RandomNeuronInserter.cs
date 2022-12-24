@@ -29,7 +29,7 @@ namespace NeuroLib.RegularNeuralNetwork.Evolution
 			int[] prs = net.GetConstructorParams();
 			if (prs.Length <= 2)
 			{
-				throw new CantModifyException("There is no hidden layers to insert neuron", net);
+				throw new CantModifyException("There is no hidden layers to insert neuron");
 			}
 
 			int layer = _ChooseLayerToExtend(prs);
