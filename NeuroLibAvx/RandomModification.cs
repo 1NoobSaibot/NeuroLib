@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace NeuroLib
@@ -26,8 +27,15 @@ namespace NeuroLib
 
 		public override T Modify(T original)
 		{
-			Modifier<T> modifier = _ChooseModifier();
-			return modifier.Modify(original);
+			try
+			{
+				Modifier<T> modifier = _ChooseModifier();
+				return modifier.Modify(original);
+			}
+			catch (CantModifyException)
+			{
+				return _TryAllExcept(original);
+			}
 		}
 
 
@@ -45,6 +53,28 @@ namespace NeuroLib
 			}
 
 			return _modifiers.Last().Modifier;
+		}
+
+
+		private T _TryAllExcept(T original)
+		{
+			List<CantModifyException> errors = new List<CantModifyException>();
+
+			foreach (var modifierWeight in _modifiers)
+			{
+				var modifier = modifierWeight.Modifier;
+
+				try
+				{
+					return modifier.Modify(original);
+				}
+				catch (CantModifyException err)
+				{
+					errors.Add(err);
+				}
+			}
+
+			throw new CantModifyException("All modifiers cant change the object", errors.ToArray());
 		}
 	}
 

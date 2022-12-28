@@ -27,19 +27,20 @@ namespace NeuroLib.RegularNeuralNetwork.Evolution
 
 		private void _RemoveHiddenNeuron(NeuralNetwork net)
 		{
+			int layer = _ChooseLayerToReduce(net);
 			int[] prs = net.GetConstructorParams();
-			int layer = _ChooseLayerToReduce(prs);
 			int neuron = _rnd.Next(prs[layer]);
 			net.RemoveNeuron(layer, neuron);
 		}
 
 
-		private int _ChooseLayerToReduce(int[] layers)
+		private int _ChooseLayerToReduce(NeuralNetwork net)
 		{
+			int[] layers = net.GetConstructorParams();
 			int[] layersCanBeReduced = _GetLayersCanBeReduced(layers);
 			if (layersCanBeReduced.Length == 0)
 			{
-				throw new Exception("Cannot remove any neuron");
+				throw new CantModifyException("Cannot remove any neuron");
 			}
 			return layersCanBeReduced[_rnd.Next(layersCanBeReduced.Length)];
 		}

@@ -1,5 +1,4 @@
 ﻿using NeuroLib;
-using System;
 
 namespace NeuroLibTest
 {

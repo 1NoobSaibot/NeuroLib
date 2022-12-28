@@ -1,4 +1,4 @@
-﻿using MatrixAvxLib;
+using MatrixAvxLib;
 using System;
 using System.Linq;
 using System.Reflection.Emit;
@@ -32,7 +32,7 @@ namespace NeuroLib.RegularNeuralNetwork.Evolution
 			int[] prs = net.GetConstructorParams();
 			if (prs.Length <= 2)
 			{
-				throw new Exception("There is not hidden layers to insert neuron");
+				throw new CantModifyException("There is no hidden layers to insert neuron");
 			}
 
 			int layer = _ChooseLayerToExtend(prs);
