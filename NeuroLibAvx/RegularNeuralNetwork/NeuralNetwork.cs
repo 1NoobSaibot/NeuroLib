@@ -1,5 +1,5 @@
-﻿using NeuroLib.Helpers;
-using System;
+﻿using MatrixAvxLib;
+using NeuroLib.Helpers;
 using System.Diagnostics;
 
 
@@ -7,7 +7,7 @@ namespace NeuroLib
 {
 	public class NeuralNetwork
 	{
-		private float[][,] _weights;
+		private MatrixF[] _weights;
 		private float[][] _layerOutputs;
 		private float[][] _biases;
 
@@ -48,7 +48,7 @@ namespace NeuroLib
 				float[] outLayer = _layerOutputs[outLayerIndex];
 				float[] inLayer = _layerOutputs[outLayerIndex - 1];
 				float[] biasVector = _biases[outLayerIndex - 1];
-				float[,] weightMatrix = _weights[outLayerIndex - 1];
+				MatrixF weightMatrix = _weights[outLayerIndex - 1];
 
 				for (int outNeuronIndex = 0; outNeuronIndex < outLayer.Length; outNeuronIndex++)
 				{
@@ -97,7 +97,7 @@ namespace NeuroLib
 		}
 
 
-		public float[,] GetWeightMatrix(int outLayerIndex)
+		public MatrixF GetWeightMatrix(int outLayerIndex)
 		{
 			return _weights[outLayerIndex - 1];
 		}
@@ -118,14 +118,14 @@ namespace NeuroLib
 			{
 				float[] dstBiasVector = copy.GetBiasVector(i);
 				float[] srcBiasVector = this.GetBiasVector(i);
-				float[,] dstWeightMatrix = copy.GetWeightMatrix(i);
-				float[,] srcWeightMatrix = this.GetWeightMatrix(i);
+				MatrixF dstWeightMatrix = copy.GetWeightMatrix(i);
+				MatrixF srcWeightMatrix = this.GetWeightMatrix(i);
 
 				for (int j = 0; j < dstBiasVector.Length; j++)
 				{
 					dstBiasVector[j] = srcBiasVector[j];
 
-					for (int inNeuron = 0; inNeuron < dstWeightMatrix.GetLength(0); inNeuron++)
+					for (int inNeuron = 0; inNeuron < dstWeightMatrix.Width; inNeuron++)
 					{
 						dstWeightMatrix[inNeuron, j] = srcWeightMatrix[inNeuron, j];
 					}
@@ -232,13 +232,13 @@ namespace NeuroLib
 
 		private void _CreateWeightsMatrixes(int[] amountsOfNeurons)
 		{
-			_weights = new float[amountsOfNeurons.Length - 1][,];
+			_weights = new MatrixF[amountsOfNeurons.Length - 1];
 
 			for (int i = 0; i < _weights.Length; i++)
 			{
 				int inputLength = amountsOfNeurons[i];
 				int outputLength = amountsOfNeurons[i + 1];
-				_weights[i] = new float[inputLength, outputLength];
+				_weights[i] = new MatrixF(inputLength, outputLength);
 			}
 		}
 

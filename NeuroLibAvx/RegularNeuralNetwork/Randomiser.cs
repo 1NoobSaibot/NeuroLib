@@ -1,4 +1,4 @@
-﻿using System;
+﻿using MatrixAvxLib;
 
 namespace NeuroLib
 {
@@ -25,13 +25,13 @@ namespace NeuroLib
 			for (int i = 1; i < layers.Length; i++)
 			{
 				float[] biasVector = srcNetwork.GetBiasVector(i);
-				float[,] weightMatrix = srcNetwork.GetWeightMatrix(i);
+				MatrixF weightMatrix = srcNetwork.GetWeightMatrix(i);
 
 				for (int j = 0; j < biasVector.Length; j++)
 				{
 					biasVector[j] = (float)_rnd.NextDouble() * 2 - 1;
 
-					for (int inNeuron = 0; inNeuron < weightMatrix.GetLength(0); inNeuron++)
+					for (int inNeuron = 0; inNeuron < weightMatrix.Width; inNeuron++)
 					{
 						weightMatrix[inNeuron, j] = (float)_rnd.NextDouble() * 2 - 1;
 					}

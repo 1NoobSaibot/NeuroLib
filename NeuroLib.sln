@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeuroLib", "NeuroLib\NeuroLib.csproj", "{787239AE-363A-46D5-80DF-28D58E4C0D51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MatrixAvxLib", "MatrixLib\MatrixAvxLib\MatrixAvxLib.csproj", "{DCC64DB8-D55D-4939-BD7A-353AB324D04E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeuroLibTest", "NeuroLibTest\NeuroLibTest.csproj", "{C9F71FE4-5342-43D1-9AB3-968B238AC256}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeuroLib", "NeuroLibAvx\NeuroLib.csproj", "{86709759-7061-4860-8B55-78E2DAA3B610}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeuroLibTest", "NeuroLibAvxTest\NeuroLibTest.csproj", "{13CB625D-6EB8-46A7-B969-44B35238AD95}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +15,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{787239AE-363A-46D5-80DF-28D58E4C0D51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{787239AE-363A-46D5-80DF-28D58E4C0D51}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{787239AE-363A-46D5-80DF-28D58E4C0D51}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{787239AE-363A-46D5-80DF-28D58E4C0D51}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C9F71FE4-5342-43D1-9AB3-968B238AC256}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C9F71FE4-5342-43D1-9AB3-968B238AC256}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C9F71FE4-5342-43D1-9AB3-968B238AC256}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C9F71FE4-5342-43D1-9AB3-968B238AC256}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCC64DB8-D55D-4939-BD7A-353AB324D04E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCC64DB8-D55D-4939-BD7A-353AB324D04E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCC64DB8-D55D-4939-BD7A-353AB324D04E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCC64DB8-D55D-4939-BD7A-353AB324D04E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86709759-7061-4860-8B55-78E2DAA3B610}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86709759-7061-4860-8B55-78E2DAA3B610}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86709759-7061-4860-8B55-78E2DAA3B610}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86709759-7061-4860-8B55-78E2DAA3B610}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13CB625D-6EB8-46A7-B969-44B35238AD95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13CB625D-6EB8-46A7-B969-44B35238AD95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13CB625D-6EB8-46A7-B969-44B35238AD95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13CB625D-6EB8-46A7-B969-44B35238AD95}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

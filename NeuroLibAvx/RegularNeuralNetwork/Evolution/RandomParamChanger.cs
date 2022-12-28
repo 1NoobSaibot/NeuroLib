@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MatrixAvxLib;
+using System;
 
 namespace NeuroLib.RegularNeuralNetwork.Evolution
 {
@@ -43,9 +44,9 @@ namespace NeuroLib.RegularNeuralNetwork.Evolution
 		{
 			int layer = _rnd.Next(net.AmountOfLayers - 1) + 1;
 
-			float[,] weights = net.GetWeightMatrix(layer);
-			int x = _rnd.Next(weights.GetLength(0));
-			int y = _rnd.Next(weights.GetLength(1));
+			MatrixF weights = net.GetWeightMatrix(layer);
+			int x = _rnd.Next(weights.Width);
+			int y = _rnd.Next(weights.Height);
 
 			weights[x, y] = _ChangeValueRandomly(weights[x, y]);
 		}

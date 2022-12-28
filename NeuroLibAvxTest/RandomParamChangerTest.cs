@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using MatrixAvxLib;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NeuroLib;
 using NeuroLib.RegularNeuralNetwork.Evolution;
 using System;
@@ -47,10 +48,10 @@ namespace NeuroLibTest
 			}
 
 
-			float[,] weights = net.GetWeightMatrix(layer);
-			for (int i = 0; i < weights.GetLength(0); i++)
+			MatrixF weights = net.GetWeightMatrix(layer);
+			for (int i = 0; i < weights.Width; i++)
 			{
-				for (int j = 0; j < weights.GetLength(1); j++)
+				for (int j = 0; j < weights.Height; j++)
 				{
 					Assert.AreNotEqual(0, weights[i, j]);
 				}

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MatrixAvxLib;
+using System;
 using System.Linq;
 using System.Reflection.Emit;
 
@@ -64,9 +65,9 @@ namespace NeuroLib.RegularNeuralNetwork.Evolution
 
 		private void _RandomeseInWeights(NeuralNetwork net, int layer)
 		{
-			float[,] inWeights = net.GetWeightMatrix(layer);
-			int insertedRowIndex = inWeights.GetLength(1) - 1;
-			for (int i = 0; i < inWeights.GetLength(0); i++)
+			MatrixF inWeights = net.GetWeightMatrix(layer);
+			int insertedRowIndex = inWeights.Height - 1;
+			for (int i = 0; i < inWeights.Width; i++)
 			{
 				inWeights[i, insertedRowIndex] = ((float)_rnd.NextDouble() * 2) - 1;
 			}
@@ -75,9 +76,9 @@ namespace NeuroLib.RegularNeuralNetwork.Evolution
 
 		private void _CreateOneRandomBindWithNextLayer(NeuralNetwork net, int layer)
 		{
-			float[,] outWeights = net.GetWeightMatrix(layer + 1);
-			int insertedColumnIndex = outWeights.GetLength(0) - 1;
-			int randomNextNeuron = _rnd.Next(outWeights.GetLength(1));
+			MatrixF outWeights = net.GetWeightMatrix(layer + 1);
+			int insertedColumnIndex = outWeights.Width - 1;
+			int randomNextNeuron = _rnd.Next(outWeights.Height);
 			outWeights[insertedColumnIndex, randomNextNeuron] = ((float)_rnd.NextDouble() * 2) - 1;
 		}
 	}
