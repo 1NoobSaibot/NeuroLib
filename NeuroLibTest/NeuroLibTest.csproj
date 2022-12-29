@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\NeuroLibAvx\NeuroLib.csproj" />
+    <ProjectReference Include="..\NeuroLib\NeuroLib.csproj" />
   </ItemGroup>
 
 </Project>
