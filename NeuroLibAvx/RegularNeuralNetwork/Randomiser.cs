@@ -24,7 +24,7 @@ namespace NeuroLib
 
 			for (int i = 1; i < layers.Length; i++)
 			{
-				float[] biasVector = srcNetwork.GetBiasVector(i);
+				VectorF biasVector = srcNetwork.GetBiasVector(i);
 				MatrixF weightMatrix = srcNetwork.GetWeightMatrix(i);
 
 				for (int j = 0; j < biasVector.Length; j++)

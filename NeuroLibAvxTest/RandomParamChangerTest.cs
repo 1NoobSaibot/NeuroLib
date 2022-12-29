@@ -41,7 +41,7 @@ namespace NeuroLibTest
 
 		private void _TestLayerParams(NeuralNetwork net, int layer)
 		{
-			float[] biases = net.GetBiasVector(layer);
+			VectorF biases = net.GetBiasVector(layer);
 			for (int i = 0; i < biases.Length; i++)
 			{
 				Assert.AreNotEqual(0, biases[i]);

@@ -58,7 +58,7 @@ namespace NeuroLib.RegularNeuralNetwork.Evolution
 
 		private void _RandomiseBias(NeuralNetwork net, int atLayer)
 		{
-			float[] biasVector = net.GetBiasVector(atLayer);
+			VectorF biasVector = net.GetBiasVector(atLayer);
 			biasVector[biasVector.Length - 1] = ((float)_rnd.NextDouble() * 2) - 1;
 		}
 

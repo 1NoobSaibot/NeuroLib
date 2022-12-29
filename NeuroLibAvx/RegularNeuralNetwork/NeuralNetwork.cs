@@ -8,8 +8,8 @@ namespace NeuroLib
 	public class NeuralNetwork
 	{
 		private MatrixF[] _weights;
-		private float[][] _layerOutputs;
-		private float[][] _biases;
+		private VectorF[] _layerOutputs;
+		private VectorF[] _biases;
 
 
 		public int AmountOfLayers => _layerOutputs.Length;
@@ -41,25 +41,31 @@ namespace NeuroLib
 		}
 
 
+		public void SetInputs(VectorF values)
+		{
+			int length = Math.Min(_layerOutputs[0].Length, values.Length);
+			for (int i = 0; i < length; i++)
+			{
+				_layerOutputs[0][i] = values[i];
+			}
+		}
+
+
 		public void Tick()
 		{
 			for (int outLayerIndex = 1; outLayerIndex < _layerOutputs.Length; outLayerIndex++)
 			{
-				float[] outLayer = _layerOutputs[outLayerIndex];
-				float[] inLayer = _layerOutputs[outLayerIndex - 1];
-				float[] biasVector = _biases[outLayerIndex - 1];
+				VectorF outLayer = _layerOutputs[outLayerIndex];
+				VectorF inLayer = _layerOutputs[outLayerIndex - 1];
+				VectorF biasVector = _biases[outLayerIndex - 1];
 				MatrixF weightMatrix = _weights[outLayerIndex - 1];
 
-				for (int outNeuronIndex = 0; outNeuronIndex < outLayer.Length; outNeuronIndex++)
+				MatrixMath.Mul(weightMatrix, inLayer, outLayer);
+				MatrixMath.Add(outLayer, biasVector, outLayer);
+
+				for (int i = 0; i < outLayer.Length; i++)
 				{
-					outLayer[outNeuronIndex] = biasVector[outNeuronIndex];
-
-					for (int inNeuronIndex = 0; inNeuronIndex < inLayer.Length; inNeuronIndex++)
-					{
-						outLayer[outNeuronIndex] += inLayer[inNeuronIndex] * weightMatrix[inNeuronIndex, outNeuronIndex];
-					}
-
-					outLayer[outNeuronIndex] = _Sigmoid(outLayer[outNeuronIndex]);
+					outLayer[i] = _Sigmoid(outLayer[i]);
 				}
 			}
 
@@ -103,7 +109,7 @@ namespace NeuroLib
 		}
 
 
-		public float[] GetBiasVector(int layerIndex)
+		public VectorF GetBiasVector(int layerIndex)
 		{
 			return _biases[layerIndex - 1];
 		}
@@ -116,8 +122,8 @@ namespace NeuroLib
 
 			for (int i = 1; i < layers.Length; i++)
 			{
-				float[] dstBiasVector = copy.GetBiasVector(i);
-				float[] srcBiasVector = this.GetBiasVector(i);
+				VectorF dstBiasVector = copy.GetBiasVector(i);
+				VectorF srcBiasVector = this.GetBiasVector(i);
 				MatrixF dstWeightMatrix = copy.GetWeightMatrix(i);
 				MatrixF srcWeightMatrix = this.GetWeightMatrix(i);
 
@@ -221,11 +227,11 @@ namespace NeuroLib
 
 		private void _CreateLayerVectors(int[] amountsOfNeurons)
 		{
-			_layerOutputs = new float[amountsOfNeurons.Length][];
+			_layerOutputs = new VectorF[amountsOfNeurons.Length];
 
 			for (int layer = 0; layer < amountsOfNeurons.Length; layer++)
 			{
-				_layerOutputs[layer] = new float[amountsOfNeurons[layer]];
+				_layerOutputs[layer] = new VectorF(amountsOfNeurons[layer]);
 			}
 		}
 
@@ -245,11 +251,11 @@ namespace NeuroLib
 
 		private void _CreateBiasVectors(int[] amountsOfNeurons)
 		{
-			_biases = new float[amountsOfNeurons.Length - 1][];
+			_biases = new VectorF[amountsOfNeurons.Length - 1];
 
 			for (int i = 1; i < amountsOfNeurons.Length; i++)
 			{
-				_biases[i - 1] = new float[amountsOfNeurons[i]];
+				_biases[i - 1] = new VectorF(amountsOfNeurons[i]);
 			}
 		}
 

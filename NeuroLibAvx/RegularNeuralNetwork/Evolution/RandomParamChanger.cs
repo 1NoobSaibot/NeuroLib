@@ -33,7 +33,7 @@ namespace NeuroLib.RegularNeuralNetwork.Evolution
 		{
 			int layer = _rnd.Next(net.AmountOfLayers - 1) + 1;
 
-			float[] biases = net.GetBiasVector(layer);
+			VectorF biases = net.GetBiasVector(layer);
 			int x = _rnd.Next(biases.Length);
 
 			biases[x] = _ChangeValueRandomly(biases[x]);
