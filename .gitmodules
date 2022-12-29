@@ -1,3 +1,4 @@
 [submodule "MatrixLib"]
 	path = MatrixLib
 	url = git@github.com:1NoobSaibot/MatrixLib.git
+	branch = master
