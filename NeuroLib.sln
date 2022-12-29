@@ -5,9 +5,9 @@ VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MatrixAvxLib", "MatrixLib\MatrixAvxLib\MatrixAvxLib.csproj", "{DCC64DB8-D55D-4939-BD7A-353AB324D04E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeuroLib", "NeuroLibAvx\NeuroLib.csproj", "{86709759-7061-4860-8B55-78E2DAA3B610}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeuroLib", "NeuroLib\NeuroLib.csproj", "{86709759-7061-4860-8B55-78E2DAA3B610}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeuroLibTest", "NeuroLibAvxTest\NeuroLibTest.csproj", "{13CB625D-6EB8-46A7-B969-44B35238AD95}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeuroLibTest", "NeuroLibTest\NeuroLibTest.csproj", "{13CB625D-6EB8-46A7-B969-44B35238AD95}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
