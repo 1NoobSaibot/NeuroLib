@@ -19,9 +19,9 @@ namespace NeuroLib
 		{
 			Debug.Assert(amountsOfNeurons.Length >= 2);
 
-			_CreateLayerVectors(amountsOfNeurons);
-			_CreateWeightsMatrixes(amountsOfNeurons);
-			_CreateBiasVectors(amountsOfNeurons);
+			_layerOutputs = _CreateLayerVectors(amountsOfNeurons);
+			_weights = _CreateWeightsMatrixes(amountsOfNeurons);
+			_biases = _CreateBiasVectors(amountsOfNeurons);
 		}
 
 
@@ -225,38 +225,44 @@ namespace NeuroLib
 		}
 
 
-		private void _CreateLayerVectors(int[] amountsOfNeurons)
+		private VectorF[] _CreateLayerVectors(int[] amountsOfNeurons)
 		{
-			_layerOutputs = new VectorF[amountsOfNeurons.Length];
+			var layers = new VectorF[amountsOfNeurons.Length];
 
 			for (int layer = 0; layer < amountsOfNeurons.Length; layer++)
 			{
-				_layerOutputs[layer] = new VectorF(amountsOfNeurons[layer]);
+				layers[layer] = new VectorF(amountsOfNeurons[layer]);
 			}
+
+			return layers;
 		}
 
 
-		private void _CreateWeightsMatrixes(int[] amountsOfNeurons)
+		private MatrixF[] _CreateWeightsMatrixes(int[] amountsOfNeurons)
 		{
-			_weights = new MatrixF[amountsOfNeurons.Length - 1];
+			var weights = new MatrixF[amountsOfNeurons.Length - 1];
 
-			for (int i = 0; i < _weights.Length; i++)
+			for (int i = 0; i < weights.Length; i++)
 			{
 				int inputLength = amountsOfNeurons[i];
 				int outputLength = amountsOfNeurons[i + 1];
-				_weights[i] = new MatrixF(inputLength, outputLength);
+				weights[i] = new MatrixF(inputLength, outputLength);
 			}
+
+			return weights;
 		}
 
 
-		private void _CreateBiasVectors(int[] amountsOfNeurons)
+		private VectorF[] _CreateBiasVectors(int[] amountsOfNeurons)
 		{
-			_biases = new VectorF[amountsOfNeurons.Length - 1];
+			var biases = new VectorF[amountsOfNeurons.Length - 1];
 
 			for (int i = 1; i < amountsOfNeurons.Length; i++)
 			{
-				_biases[i - 1] = new VectorF(amountsOfNeurons[i]);
+				biases[i - 1] = new VectorF(amountsOfNeurons[i]);
 			}
+
+			return biases;
 		}
 
 
