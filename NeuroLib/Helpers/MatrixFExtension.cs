@@ -2,11 +2,11 @@
 
 namespace NeuroLib.Helpers
 {
-	internal static class MatrixFExtension
+	internal static class MatrixAvxFExtension
 	{
-		internal static MatrixF RemoveRow(this MatrixF origin, int yIndex)
+		internal static MatrixAvxF RemoveRow(this MatrixAvxF origin, int yIndex)
 		{
-			MatrixF res = new MatrixF(origin.Width, origin.Height - 1);
+			MatrixAvxF res = new MatrixAvxF(origin.Width, origin.Height - 1);
 
 			for (int y = 0; y < origin.Height; y++)
 			{
@@ -30,9 +30,9 @@ namespace NeuroLib.Helpers
 		}
 
 
-		internal static MatrixF RemoveColumn(this MatrixF origin, int xIndex)
+		internal static MatrixAvxF RemoveColumn(this MatrixAvxF origin, int xIndex)
 		{
-			MatrixF res = new MatrixF(origin.Width - 1, origin.Height);
+			MatrixAvxF res = new MatrixAvxF(origin.Width - 1, origin.Height);
 
 			for (int x = 0; x < origin.Width; x++)
 			{
@@ -56,9 +56,9 @@ namespace NeuroLib.Helpers
 		}
 
 
-		internal static MatrixF AddRow(this MatrixF origin)
+		internal static MatrixAvxF AddRow(this MatrixAvxF origin)
 		{
-			MatrixF res = new MatrixF(origin.Width, origin.Height + 1);
+			MatrixAvxF res = new MatrixAvxF(origin.Width, origin.Height + 1);
 
 			for (int x = 0; x < origin.Width; x++)
 			{
@@ -72,9 +72,9 @@ namespace NeuroLib.Helpers
 		}
 
 
-		internal static MatrixF AddColumn(this MatrixF origin)
+		internal static MatrixAvxF AddColumn(this MatrixAvxF origin)
 		{
-			MatrixF res = new MatrixF(origin.Width + 1, origin.Height);
+			MatrixAvxF res = new MatrixAvxF(origin.Width + 1, origin.Height);
 
 			for (int x = 0; x < origin.Width; x++)
 			{

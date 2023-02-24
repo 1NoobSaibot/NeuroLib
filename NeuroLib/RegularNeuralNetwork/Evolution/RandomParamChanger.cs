@@ -1,11 +1,10 @@
 ﻿using MatrixAvxLib;
-using System;
 
 namespace NeuroLib.RegularNeuralNetwork.Evolution
 {
 	public class RandomParamChanger : Modifier<NeuralNetwork>
 	{
-		private Random _rnd;
+		private readonly Random _rnd;
 
 
 		public RandomParamChanger(Random rnd)
@@ -18,41 +17,41 @@ namespace NeuroLib.RegularNeuralNetwork.Evolution
 		{
 			if (_rnd.Next() % 2 == 0)
 			{
-				_ChangeRandomBias(original);
+				ChangeRandomBias(original);
 			}
 			else
 			{
-				_ChangeRandomWeight(original);
+				ChangeRandomWeight(original);
 			}
 
 			return original;
 		}
 
 
-		private void _ChangeRandomBias(NeuralNetwork net)
+		private void ChangeRandomBias(NeuralNetwork net)
 		{
 			int layer = _rnd.Next(net.AmountOfLayers - 1) + 1;
 
 			VectorF biases = net.GetBiasVector(layer);
 			int x = _rnd.Next(biases.Length);
 
-			biases[x] = _ChangeValueRandomly(biases[x]);
+			biases[x] = ChangeValueRandomly(biases[x]);
 		}
 
 
-		private void _ChangeRandomWeight(NeuralNetwork net)
+		private void ChangeRandomWeight(NeuralNetwork net)
 		{
 			int layer = _rnd.Next(net.AmountOfLayers - 1) + 1;
 
-			MatrixF weights = net.GetWeightMatrix(layer);
+			MatrixAvxF weights = net.GetWeightMatrix(layer);
 			int x = _rnd.Next(weights.Width);
 			int y = _rnd.Next(weights.Height);
 
-			weights[x, y] = _ChangeValueRandomly(weights[x, y]);
+			weights[x, y] = ChangeValueRandomly(weights[x, y]);
 		}
 
 
-		private float _ChangeValueRandomly(float originalValue)
+		private float ChangeValueRandomly(float originalValue)
 		{
 			int precision = _rnd.Next(7);
 			int order = originalValue == 0.0f

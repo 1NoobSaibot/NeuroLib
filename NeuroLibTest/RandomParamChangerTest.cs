@@ -17,29 +17,29 @@ namespace NeuroLibTest
 		[TestMethod]
 		public void ItShouldChangeAllParamsInTheNetwork()
 		{
-			NeuralNetwork net = new NeuralNetwork(3, 3, 3);
-			RandomParamChanger changer = new RandomParamChanger(new Random());
+			NeuralNetwork net = new (3, 3, 3);
+			RandomParamChanger changer = new (new Random());
 
 			for (int i = 0; i < 10000; i++)
 			{
 				changer.Modify(net);
 			}
 
-			_TestNetworkParams(net);
+			TestNetworkParams(net);
 		}
 
 
-		private void _TestNetworkParams(NeuralNetwork net)
+		private static void TestNetworkParams(NeuralNetwork net)
 		{
 			int[] prms = net.GetConstructorParams();
 			for (int i = 1; i < prms.Length; i++)
 			{
-				_TestLayerParams(net, i);
+				TestLayerParams(net, i);
 			}
 		}
 
 
-		private void _TestLayerParams(NeuralNetwork net, int layer)
+		private static void TestLayerParams(NeuralNetwork net, int layer)
 		{
 			VectorF biases = net.GetBiasVector(layer);
 			for (int i = 0; i < biases.Length; i++)
@@ -48,7 +48,7 @@ namespace NeuroLibTest
 			}
 
 
-			MatrixF weights = net.GetWeightMatrix(layer);
+			MatrixAvxF weights = net.GetWeightMatrix(layer);
 			for (int i = 0; i < weights.Width; i++)
 			{
 				for (int j = 0; j < weights.Height; j++)

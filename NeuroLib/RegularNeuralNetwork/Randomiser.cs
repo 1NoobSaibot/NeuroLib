@@ -4,7 +4,7 @@ namespace NeuroLib
 {
 	public class NeuralNetworkRandomiser : Modifier<NeuralNetwork>
 	{
-		private Random _rnd;
+		private readonly Random _rnd;
 
 		public NeuralNetworkRandomiser()
 		{
@@ -25,7 +25,7 @@ namespace NeuroLib
 			for (int i = 1; i < layers.Length; i++)
 			{
 				VectorF biasVector = srcNetwork.GetBiasVector(i);
-				MatrixF weightMatrix = srcNetwork.GetWeightMatrix(i);
+				MatrixAvxF weightMatrix = srcNetwork.GetWeightMatrix(i);
 
 				for (int j = 0; j < biasVector.Length; j++)
 				{
