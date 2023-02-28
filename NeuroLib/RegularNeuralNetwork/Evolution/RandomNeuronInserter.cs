@@ -48,7 +48,7 @@ namespace NeuroLib.RegularNeuralNetwork.Evolution
 		private void RandomiseNewParams(NeuralNetwork net, int layer)
 		{
 			RandomiseBias(net, layer);
-			RandomeseInWeights(net, layer);
+			RandomiseInWeights(net, layer);
 			CreateOneRandomBindWithNextLayer(net, layer);
 		}
 
@@ -60,7 +60,7 @@ namespace NeuroLib.RegularNeuralNetwork.Evolution
 		}
 
 
-		private void RandomeseInWeights(NeuralNetwork net, int layer)
+		private void RandomiseInWeights(NeuralNetwork net, int layer)
 		{
 			MatrixAvxF inWeights = net.GetWeightMatrix(layer);
 			int insertedRowIndex = inWeights.Height - 1;
