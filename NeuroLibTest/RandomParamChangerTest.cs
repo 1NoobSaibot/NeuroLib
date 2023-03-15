@@ -1,8 +1,6 @@
 ﻿using MatrixAvxLib;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NeuroLib;
 using NeuroLib.RegularNeuralNetwork.Evolution;
-using System;
 
 namespace NeuroLibTest
 {

@@ -8,10 +8,10 @@ namespace NeuroLibTest
 		[TestMethod]
 		public void ShouldShowAmountOfLayers()
 		{
-			NeuralNetwork neuralNetwork = new NeuralNetwork(1, 1, 1);
+			NeuralNetwork neuralNetwork = new(1, 1, 1);
 			Assert.AreEqual(3, neuralNetwork.AmountOfLayers);
 
-			neuralNetwork = new NeuralNetwork(1, 1, 1, 1);
+			neuralNetwork = new(1, 1, 1, 1);
 			Assert.AreEqual(4, neuralNetwork.AmountOfLayers);
 		}
 
@@ -67,11 +67,11 @@ namespace NeuroLibTest
 		[TestMethod]
 		public void ShouldReturnAnAmountOfParams()
 		{
-			NeuralNetwork net = new NeuralNetwork(1, 1);
+			NeuralNetwork net = new(1, 1);
 			Assert.AreEqual(2, net.GetAmountOfParams());
 
 			// (4w + 2b) + (2w + 1b)
-			net = new NeuralNetwork(2, 2, 1);
+			net = new(2, 2, 1);
 			Assert.AreEqual(9, net.GetAmountOfParams());
 		}
 	}

@@ -1,5 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NeuroLib;
+﻿using NeuroLib;
 using NeuroLib.RegularNeuralNetwork.Evolution;
 
 namespace NeuroLibTest
@@ -12,7 +11,7 @@ namespace NeuroLibTest
 		public void ItShouldNotChangeAnyParamsOfIndependentNeurons()
 		{
 			NeuralNetwork xor = XorNetworkBuilder.BuildNetwork();
-			RandomNeuronInserter inserter = new RandomNeuronInserter();
+			RandomNeuronInserter inserter = new();
 			xor = inserter.Modify(xor);
 
 			// It doesn't throw any construction error;
