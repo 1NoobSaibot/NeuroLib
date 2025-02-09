@@ -56,9 +56,9 @@ namespace NeuroLib.RegularNeuralNetwork.Evolution
 			int precision = _rnd.Next(7);
 			int order = originalValue == 0.0f
 			? 0
-				: (int)Math.Log10(Math.Abs(originalValue));
+				: (int)System.Math.Log10(System.Math.Abs(originalValue));
 
-			float scale = (float)Math.Pow(10, order - precision);
+			float scale = (float)System.Math.Pow(10, order - precision);
 			float difference = (float)_rnd.NextDouble() * 2 - 1;
 			return originalValue + scale * difference;
 		}

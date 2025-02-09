@@ -33,7 +33,7 @@ namespace NeuroLib
 
 		public void SetInputs(float[] values)
 		{
-			int length = Math.Min(_layerOutputs[0].Length, values.Length);
+			int length = System.Math.Min(_layerOutputs[0].Length, values.Length);
 			for (int i = 0; i < length; i++)
 			{
 				_layerOutputs[0][i] = values[i];
@@ -43,7 +43,7 @@ namespace NeuroLib
 
 		public void SetInputs(VectorF values)
 		{
-			int length = Math.Min(_layerOutputs[0].Length, values.Length);
+			int length = System.Math.Min(_layerOutputs[0].Length, values.Length);
 			for (int i = 0; i < length; i++)
 			{
 				_layerOutputs[0][i] = values[i];
@@ -72,7 +72,7 @@ namespace NeuroLib
 
 			static float _Sigmoid(float input)
 			{
-				return 1 / (1 + (float)Math.Exp(-4 * input));
+				return 1 / (1 + (float)System.Math.Exp(-4 * input));
 			}
 		}
 
