@@ -1,5 +1,4 @@
 ﻿using NeuroLib.Layers;
-using NeuroLib.Math;
 
 namespace NeuroLibTest.Layers
 {
@@ -18,7 +17,7 @@ namespace NeuroLibTest.Layers
 		[TestMethod]
 		public void ReturnZerosWhenNotInitialized()
 		{
-			CudaDeviceMatrix input = new(rows: batchSize, columns: inputVectorSize);
+			InputLayer input = new(amountOfInputs: inputVectorSize, batchSize: batchSize);
 			DenseLayer layer = new(input, outputVectorSize);
 
 			layer.Forward();
@@ -34,7 +33,7 @@ namespace NeuroLibTest.Layers
 		[TestMethod]
 		public void InputWeightOutputAreBoundWell()
 		{
-			CudaDeviceMatrix input = new(rows: batchSize, columns: inputVectorSize);
+			InputLayer input = new(amountOfInputs: inputVectorSize, batchSize: batchSize);
 			DenseLayer layer = new(input, outputVectorSize);
 
 			Reset(inputBuffer);
@@ -89,7 +88,7 @@ namespace NeuroLibTest.Layers
 		[TestMethod]
 		public void BiasesOutputsAreBound()
 		{
-			CudaDeviceMatrix input = new(rows: batchSize, columns: inputVectorSize);
+			InputLayer input = new(amountOfInputs: inputVectorSize, batchSize: batchSize);
 			DenseLayer layer = new(input, outputVectorSize);
 
 			Reset(inputBuffer);

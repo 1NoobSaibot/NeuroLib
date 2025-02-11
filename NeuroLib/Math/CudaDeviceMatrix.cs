@@ -1,4 +1,5 @@
 ﻿using NeuroLib.Libs;
+using System.Runtime.CompilerServices;
 
 namespace NeuroLib.Math
 {
@@ -67,6 +68,13 @@ namespace NeuroLib.Math
 				throw new ArgumentException("Output array size does not match matrix size.");
 
 			CudaLib.TransferFromDeviceToHost(DeviceMemoryPointer, hostData);
+		}
+
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static CudaDeviceMatrix CreateWithShapeOf(CudaDeviceMatrix proto)
+		{
+			return new CudaDeviceMatrix(rows: proto.Rows, columns: proto.Columns);
 		}
 	}
 }

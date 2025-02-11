@@ -78,7 +78,13 @@
     </CudaCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <CudaCompile Include="Math.cu" />
     <CudaCompile Include="kernel.cu" />
+    <CudaCompile Include="ReLU.cu" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Math.cuh" />
+    <ClInclude Include="ReLU.cuh" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
