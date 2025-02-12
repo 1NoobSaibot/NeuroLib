@@ -2,3 +2,6 @@
 	path = MatrixLib
 	url = git@github.com:1NoobSaibot/MatrixLib.git
 	branch = master
+[submodule "BinaryReaderWriterExtension"]
+	path = BinaryReaderWriterExtension
+	url = git@github.com:1NoobSaibot/BinaryReaderWriterExtension.git

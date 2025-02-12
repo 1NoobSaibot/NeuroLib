@@ -131,5 +131,45 @@ namespace NeuroLib
 				return order;
 			}
 		}
+
+
+		public int GetNumberOfUnitsForLayer(int i)
+		{
+			ILayer layer = _layers[i];
+			if (layer is InputLayer il)
+			{
+				return il.Inputs.Columns;
+			}
+			if (layer is DenseLayer dlt)
+			{
+				return dlt.Outputs.Columns;
+			}
+			throw new Exception();
+		}
+
+
+		public float[] GetWeightsOfLayer(int i)
+		{
+			ILayer layer = _layers[i];
+			if (layer is DenseLayer dl)
+			{
+				return dl.WeightsAndBiases.GetValues();
+			}
+			throw new Exception();
+		}
+
+
+		public void SetWeightsOfLayer(int i, float[] weights)
+		{
+			ILayer layer = _layers[i];
+			if (layer is DenseLayer dl)
+			{
+				dl.WeightsAndBiases.SetValues(weights);
+			}
+			else
+			{
+				throw new Exception();
+			}
+		}
 	}
 }

@@ -62,6 +62,14 @@ namespace NeuroLib.Math
 		}
 
 
+		public float[] GetValues()
+		{
+			float[] res = new float[ElementCount];
+			GetValues(res);
+			return res;
+		}
+
+
 		public void GetValues(float[] hostData)
 		{
 			if (hostData.Length != ElementCount)

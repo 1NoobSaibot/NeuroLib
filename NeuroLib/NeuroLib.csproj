@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BinaryReaderWriterExtension\BinaryReaderWriterExtension\BinaryReaderWriterExtension.csproj" />
     <ProjectReference Include="..\MatrixLib\MatrixAvxLib\MatrixAvxLib.csproj" />
   </ItemGroup>
 
